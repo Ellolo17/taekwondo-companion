@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es" id="facebook" class="no_js" style="height:100%;">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="estilo.css" />
+    <script type="text/javascript" src="taejs.js"></script>
+
+</head>
+
+<body onload="loadQuestion()" style="height:100%; background-image: linear-gradient(brown, brown, rgb(124, 29, 29));position: fixed;width: 100%;">
+    <div id="cover" style="position:absolute; top:0px; left: 0px;height:100%; width:100%; background-image: linear-gradient(brown, brown, rgb(124, 29, 29));z-index: 1000;visibility: hidden;text-align: center;">
+        <div id="result" style="color:white;"></div>
+        <button id="closeCover" type="button" onclick="document.getElementById('cover').style.visibility='hidden';">Click
+            Me!</button>
+    </div>
+    <div id="background" style="height:100%; overflow:scroll;width: 100%; text-align: center;">
+        <div id="holder" style="margin:auto;text-align: center;">
+            <div id="header" style="display:flex; flex-direction: row; justify-content: center;">
+                <h1 style="color:white; padding-right:20px; ">TAEKWONDO COMPANION</h1>
+                <div id="filterColor" class="dropdown" style="display:flex; flex-flow: column; padding-top: 5px; 
+                                                        background-color: black; border: 1px solid darkred; 
+                                                        box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.75);" onclick="expandFilter();">
+                    <div id="selectedfilter" style="display:flex; flex-flow: row; align-items: center;">
+                            <div style="color: white; font-weight: bold; margin-left: 10px;">Filter:</div>
+                            <div id="filterball" style="margin: 0px 10px; border: 3px solid darkred; border-radius: 100%; width:40px; height:40px; background-color: white;"></div>
+                            <div id="filtertext" style="color: white; margin-right: 10px;">weiß</div>
+                    </div>
+                    
+                    <div id="filmyDropdown" class="dropdown-content-hidden">
+                            <div id="ddwhite" style="display:flex; flex-flow: row;" onclick="applyfilter('white', 'Weiß')">
+                                <div id="filterball" style="margin: 0px 10px; border: 3px solid darkred; border-radius: 100%; width:40px; height:40px; background-color: white;"></div>
+                                <div id="filtertext" style="color: white; margin-right: 10px;">weiß</div>
+                            </div>
+                            <div id="ddyellow" style="display:flex; flex-flow: row;" onclick="applyfilter('yellow', 'Gelb')">
+                                <div id="filterball" style="margin: 0px 10px; border: 3px solid darkred; border-radius: 100%; width:40px; height:40px; background-color: yellow;"></div>
+                                <div id="filtertext" style="color: white; margin-right: 10px;">Gelb</div>
+                            </div>
+                            <div id="ddgreen" style="display:flex; flex-flow: row;" onclick="applyfilter('green', 'Grün')">
+                                <div id="filterball" style="margin: 0px 10px; border: 3px solid darkred; border-radius: 100%; width:40px; height:40px; background-color: green;"></div>
+                                <div id="filtertext" style="color: white; margin-right: 10px;">Grün</div>
+                            </div>
+                            <div id="ddblue" style="display:flex; flex-flow: row;" onclick="applyfilter('blue', 'Blau')">
+                                <div id="filterball" style="margin: 0px 10px; border: 3px solid darkred; border-radius: 100%; width:40px; height:40px; background-color: blue;"></div>
+                                <div id="filtertext" style="color: white; margin-right: 10px;">Blau</div>
+                            </div>
+                            <div id="ddred" style="display:flex; flex-flow: row;" onclick="applyfilter('red', 'Rot')">
+                                <div id="filterball" style="margin: 0px 10px; border: 3px solid darkred; border-radius: 100%; width:40px; height:40px; background-color: red;"></div>
+                                <div id="filtertext" style="color: white; margin-right: 10px;">Rot</div>
+                            </div>
+                            <div id="ddblack" style="display:flex; flex-flow: row;" onclick="applyfilter('black', 'Schwartz')">
+                                <div id="filterball" style="margin: 0px 10px; border: 3px solid darkred; border-radius: 100%; width:40px; height:40px; background-color: black;"></div>
+                                <div id="filtertext" style="color: white; margin-right: 10px;">Schwartz</div>
+                            </div>
+                    </div>
+                </div>
+                <div id="filterkategorie" class="dropdown" style="display:flex; flex-flow: column; padding-top: 5px; 
+                                                        background-color: black; border: 1px solid darkred; 
+                                                        box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.75);" onclick="expandKategorie();">
+                    <div id="selectedkategorie" style="display:flex; flex-flow: row; align-items: center;">
+                            <div style="color: white; font-weight: bold; margin-left: 10px;">Kategorie:</div>
+                            <div id="kategorieball" style="margin: 0px 10px; border: 3px solid darkred; border-radius: 100%; width:40px; height:40px; background-image: URL('./imgtae/dollyoChagui.png'); background-size: cover;"></div>
+                            <div id="kategorietext" style="color: white; margin-right: 10px;">Namen</div>
+                    </div>
+                    
+                    <div id="katmyDropdown" class="dropdown-content-hidden">
+                            <div id="ddnames" style="display:flex; flex-flow: row;" onclick="applyKategorie('names', 'URL( \'./imgtae/dollyoChagui.png\')' , 'Namen')">
+                                <div id="kategorieball" style="margin: 0px 10px; border: 3px solid darkred; border-radius: 100%; width:40px; height:40px; background-image: URL('./imgtae/dollyoChagui.png'); background-size: cover;"></div>
+                                <div id="kategorietext" style="color: white; margin-right: 10px;">Namen</div>
+                            </div>
+                            <div id="ddpomsee" style="display:flex; flex-flow: row;" onclick="applyKategorie('pomsee','URL( \'./imgtae/pomselogo.png\')' ,'Poomsae')">
+                                <div id="kategorieball" style="margin: 0px 10px; border: 3px solid darkred; border-radius: 100%; width:40px; height:40px; background-image: URL('./imgtae/pomselogo.png'); background-size: cover;"></div>
+                                <div id="kategorietext" style="color: white; margin-right: 10px;">Poomsae</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 id="selectedkategorietext" style="color:white; justify-self: center; ">Namen</h2>
+            <div class="grid-container" style="margin: auto;">
+                <div class="grid-item header">
+                    <h2 >
+                        was ist das?
+                    </h2>
+                </div>
+                <div id="frage" style="font-size: 50px;"></div>
+                    
+                <div id="antwort" style="display:flex; flex-wrap: wrap; align-items: center; align-content: center; justify-content: center; margin:auto;">
+                    <div id="antwort1" class="button" style="margin-right:5px;" onclick="buttonOnClick(0)">
+                        Click Me!
+                    </div>
+                    <div id="antwort2" class="button" onclick="buttonOnClick(1)">
+                        Click Me!
+                    </div>
+                    <div id="antwort3" class="button" style="margin-left:5px;"  onclick="buttonOnClick(2)">
+                        Click Me!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button" onclick="loadQuestion()" style="margin: auto; margin-top: 10px; width: 100px;">neue Frage</div>
+
+        <div id="legal" style="color:white;">
+                <p>Die Bildern gehören den Fitness Studio "Gimnasio Lee" ( http://www.gimnasiolee.com ), ich habe seine Bildern und PDF benutzt um die Worter zu lernen, deswegen das erster Version dieser Software nutzt diese Bildern, bis ich neue Bildern mache/bekomme</p>
+                <p>Las imagenes pertenecen al "Gimnasio Lee" ( http://www.gimnasiolee.com ), las imagenes y PDFs de su página web me han ayudado mucho para aprender las palabras, por eso la primera version de este software (pensada para mi solo) usa estas imagenes, hasta que reciba o haga nuevas que las sustituyan</p>
+        </div>
+        
+    </div>
+
+   
+</body>
+
+</html>
