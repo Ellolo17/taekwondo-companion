@@ -5,7 +5,4 @@ The first version was done only for me, so right now I´m using the images that 
 
 Link to live version: https://ellolo17.github.io/taekwondo-companion/
 
-Next steps:
--Apply the filters. Right now the changes are only stetic.
--Add poomsae questions
--implement translation because right now the names are adapted to spanish, and not to english or german.
+NOTE: 11.02.2021 - This project is dead. I wanted to make my own graphics for this and addmore features (like a filter after belt colour, asking for the next step of a kata/form to help learn the sequences, etc...) But I had no time and right now this is very dead, there are other things/Projects I want to make and I dont think I will keep doing this (I havent done anything in 2 years or so). 
